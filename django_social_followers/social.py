@@ -3,14 +3,31 @@ import urlparse
 import subprocess
 
 from django.conf import settings
-from django.core.management.base import NoArgsCommand
 
 import facebook
 from instagram.client import InstagramAPI
 import tweepy
 
 
-class Socialize(NoArgsCommand):
+class FacebookError(Exception):
+    def __init__(self, message, errors):
+        super(FacebookError, self).__init__(message)
+        self.errors = 'Could not connect to Facebook'
+
+
+class InstagramError(Exception):
+    def __init__(self, message, errors):
+        super(InstagramError, self).__init__(message)
+        self.errors = 'Could not connect to Instagram'
+
+
+class TwitterError(Exception):
+    def __init__(self, message, errors):
+        super(InstagramError, self).__init__(message)
+        self.errors = 'Could not connect to Twitter'
+
+
+class SocialFollowers():
 
     def __init__(self, **options):
         self.INSTAGRAM_SETTINGS = settings.INSTAGRAM_SETTINGS
@@ -33,13 +50,12 @@ class Socialize(NoArgsCommand):
         try:
             oauth_access_token = urlparse.parse_qs(str(oauth_response))['access_token'][0]
         except KeyError:
-            print('Unable to grab an access token!')
+            raise FacebookError
             exit()
 
         facebook_graph = facebook.GraphAPI(oauth_access_token)
         user = facebook_graph.get_object('/%s' % user)
         return user['likes']
-        # print "We have %s fans" % facebook_graph.get_object('/%s' % user)['fan_count']
 
     def get_twitter_followers(self, user):
         print 'get_twitter_followers', user
@@ -50,8 +66,7 @@ class Socialize(NoArgsCommand):
             user = api.get_user(user)
             return user.followers_count
         except Exception as e:
-            print e
-            return 0
+            raise TwitterError
 
     def get_instagram_followers(self, user_id):
         print 'get_instagram_followers', user_id
@@ -60,6 +75,5 @@ class Socialize(NoArgsCommand):
             user = api.user(user_id)
             return user.counts['followed_by']
         except Exception as e:
-            print e
-            return 0
+            raise InstagramError
 

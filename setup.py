@@ -7,7 +7,7 @@ setup(
     author = 'Will And Skill AB - Sweden',
     author_email = 'info@willandskill.se',
     url = 'https://github.com/willandskill/django_social_followers', # use the URL to the github repo
-    download_url = 'https://github.com/willandskill/django_social_followers/releases/tag/0.1', # I'll explain this in a second
+    download_url = 'https://github.com/willandskill/django_social_followers/releases/tag/0.3', # I'll explain this in a second
     keywords = ['social', 'followers', 'instagram', 'facebook', 'twitter'], # arbitrary keywords
     classifiers = [],
     install_requires=[

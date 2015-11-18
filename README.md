@@ -1,7 +1,13 @@
-# django_social_followers
+# Django Social Followers
 
 
-# Getting started
+## Installation
+
+```
+pip install django_social_followers
+```
+
+## Configuration
 
 [Create a FACEBOOK App]  (https://developers.facebook.com/apps/) and get your App ID and App Secret
 
@@ -32,6 +38,8 @@
   }
   
 ```
+
+## Usage
 
 **Add code to fetch followers**
 

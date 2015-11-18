@@ -3,13 +3,14 @@
 
 # Getting started
 
-[Create a Facebook and get your App ID and App Secret]  (https://developers.facebook.com/apps/)
+[Create a FACEBOOK App]  (https://developers.facebook.com/apps/) and get your App ID and App Secret
 
-[Create an Instagram App and get your Client ID and Client Secret] (https://instagram.com/developer/clients/manage/ )
+[Create an INSTAGRAM App] (https://instagram.com/developer/clients/manage/ ) and get your Client ID and Client Secret
 
-[Create and app and get your TWITTER CONSUMER KEY, CONSUMER SECRET, ACCESS TOKEN AND ACCESS TOKEN SECRET] (https://apps.twitter.com/)
+[Create a TWITTER app] (https://apps.twitter.com/) and get your Consumer Key, Consumer Secret, Access Token and Access Token Secret
 
-** Add your social settings to settings.py **
+**Add your social settings to settings.py**
+
 ```javascript
   
   FACEBOOK_SETTINGS = {
@@ -32,7 +33,7 @@
   
 ```
 
-** Add code to fetch followers **
+**Add code to fetch followers**
 
 ```
 from django_social_followers.social import SocialFollowers
@@ -46,5 +47,6 @@ print facebook_followers, instagram_followers, twitter_followers
 
 ```
 
-** INSTAGRAM USER ID **
+**INSTAGRAM USER ID**
+
 [Get your Instagram user id] (http://jelled.com/instagram/lookup-user-id)
